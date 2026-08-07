@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/Product.css">
+    <title>Amazing Bargain Product</title>
+</head>
+<body>
+    <div>
+        <img src="{{ url_for('static', filename=product['image']) }}" alt="Mambo">
+        <h1 class="desc">{{ product['item_name'] }}</h1>
+        <h2 class="desc">Price: £{{ product['price'] }}</h2>
+        <h2 class="desc">Amount in stock: {{product['stock']}}<h2>
+        <h3 class="desc">
+            {{ product['desc'] }}
+        </h3>
+        <form action="{{ url_for('buy_now', item_id=product['item_id']) }}" method="POST">
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" min="1" max="{{ product.stock }}" value="1">
+            {% if product.stock > 0 %}
+                <button type="submit">Buy Now!</button>
+            {% else %}
+                <button type="button" disabled style="background:grey; cursor:not-allowed;">Out of Stock</button>
+            {% endif %}
+        </form>
+
+
+    </div>
+    <hr>
+    <h2>Reviews</h2>
+    {% if reviews %}
+    {% for r in reviews %}
+        <div class="review">
+            <p><strong>{{ r.username }}:</strong> {{ r.reviewTxt }}</p>
+            <p>Rating: {{ r.rating }}/5</p>
+        </div>
+    {% endfor %}
+    {% else %}
+        <p>No reviews yet.</p>
+    {% endif %}
+</body>
+</html>

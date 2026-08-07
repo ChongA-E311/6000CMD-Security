@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h2, p {
+  margin: 10px;
+}
+
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+}
+
+.topnav a {
+  color: white;
+  padding: 0 15px;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  background-color: #111;
+}
+
+.topnav-right span,
+.topnav-right a {
+  color: white;
+  margin-left: 10px;
+}
+
+.search-container input {
+  padding: 5px;
+}
+
+.topnav input[type="text"] {
+  padding: 6px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  padding: 6px 10px;
+  margin-left: 10px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.product_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  padding: 5px;
+  background-color: #fff;
+}
+
+.product_list div {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+}
+

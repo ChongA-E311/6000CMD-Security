@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login_Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/Login.css">
+    <title>Amazing Bargain Login</title>
+</head>
+<body>
+    <form action="/Login" method="POST" class="Tuto">
+        <label for="login_input">Email or Username:</label>
+        <input type="text" id="login_input" name="login_input" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

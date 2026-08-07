@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase Successful</title>
+</head>
+<body>
+    <h1>Thank you for your purchase!</h1>
+
+    <h2>{{ product.item_name }}</h2>
+    <p>You paid £{{ product.price }}</p>
+    <p>Purchase recorded successfully.</p>
+
+    <a href="{{ url_for('loadHome') }}">Return Home</a>
+</body>
+</html>

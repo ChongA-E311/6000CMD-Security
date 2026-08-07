@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/Home.css">
+    <title>Amazing Bargain Home</title>
+</head>
+<body>
+  <div class="topnav">
+    <!-- Navigation links -->
+    <a href="{{ url_for('loadHome') }}">Home</a>
+    <a href="{{ url_for('profile') }}">Profile</a>
+
+    <!-- Right-aligned user info and logout -->
+    <div class="topnav-right">
+        {% if user %}
+            <span><strong>{{ user.username }}</strong></span>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </div>
+
+    <!-- Search bar -->
+    <div class="search-container">
+        <form action="{{ url_for('search') }}" method="GET">
+            <input type="text" placeholder="Search..." name="query">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+  </div>
+
+    
+    <h1>Stuff we <small><small><small><small><small><small><small><small>might</small></small></small></small></small></small></small></small> have</h1>
+
+    <div class="product_list">
+
+      {% if products %}
+        {% for p in products %}
+            <div class="product">
+                <img src="{{ url_for('static', filename=p['image']) }}" width="200" height="200">
+                <h3>{{ p['item_name'] }}</h3>
+                <p>£{{ p['price'] }}</p>
+                <a href="{{ url_for('product_page', item_id=p['item_id']) }}">View Item</a>
+            </div>
+        {% endfor %}
+        {% else %}
+        <p>No products found for "{{ request.args.get('query') }}"</p>
+      {% endif %}
+
+    </div>
+    
+</body>
+</html>
